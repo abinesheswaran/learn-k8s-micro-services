@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: server-c-pod
+  labels:
+    app: server-c
+spec:
+  containers:
+    - name: server-c
+      image: docker-compose-server_c:latest
+      ports:
+        - containerPort: 3003
+      imagePullPolicy: Never

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-a-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: server-a
+  template:
+    metadata:
+      labels:
+        app: server-a
+    spec:
+      containers:
+        - name: server-a
+          image: docker-compose-server_a:latest
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3001
+    
