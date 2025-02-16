@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: frontend
+  ports:
+    - port: 5000
+      targetPort: 5000
+      # nodePort: 30007
+      protocol: TCP
+  # type: NodePort //commenting because of using ingress
+  type: ClusterIP

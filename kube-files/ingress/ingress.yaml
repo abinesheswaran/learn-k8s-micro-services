@@ -1,0 +1,42 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+spec:
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /server-a
+            pathType: Prefix
+            backend:
+              service:
+                name: server-a-service
+                port:
+                  number: 3001
+
+          - path: /server-b
+            pathType: Prefix
+            backend:
+              service:
+                name: server-b-service
+                port:
+                  number: 3002
+
+          - path: /server-c
+            pathType: Prefix
+            backend:
+              service:
+                name: server-c-service
+                port:
+                  number: 3003
+
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 5000
